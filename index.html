@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreia Lanna | Alta-costura contemporânea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/codigo.css">
+</head>
+<body>
+    <!-- topo do site -->
+    <div class="top-bar">
+        <a href="index.html" class="logo">Andreia Lanna</a>
+        <div class="menu-btn">
+            Menu
+            <ul class="dropdown-menu">
+                <li><a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li><a href="be-yourself.html">Be Your Self</a></li>
+                <li><a href="colecao.html">Coleção</a></li>
+                <li><a href="#">Lookbook</a></li>
+                <li><a href="#">Sustentabilidade</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Journal</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- vídeo principal da home -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="../assets/videos/landpage.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <a href="be-yourself.html" class="hero-cta">Be Your Self</a>
+        <div class="video-overlay"></div>
+        <div class="scroll-indicator" onclick="scrollToContent()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- sobre a coleção -->
+    <section class="concept" id="concept">
+        <div class="section-header">
+            <h2 class="section-title">A Nova Coleção</h2>
+            <p class="section-subtitle">Uma narrativa visual que celebra a essência feminina através de cortes arquitetônicos e tecidos fluidos.</p>
+        </div>
+        <div class="concept-grid">
+            <img src="https://images.unsplash.com/photo-1704926273322-86addc31fbf2?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Conceito da coleção" class="concept-image">
+            <div class="concept-text">
+                <h3>Inspiração</h3>
+                <p>A coleção Primavera/Verão 2024 nasce do diálogo entre a força das estruturas urbanas e a delicadeza dos movimentos naturais. Cada peça é uma ode à mulher contemporânea que transita entre diferentes papéis com elegância e autenticidade.</p>
+                <h3>Materiais</h3>
+                <p>Utilizamos sedes orgânicas e algodões sustentáveis, trabalhados com técnicas de draping que criam volume e movimento. Os detalhes em metal escovado remetem à arquitetura brutalista, enquanto os tons terrosos evocam uma conexão com a natureza.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- lookbook -->
+    <section class="lookbook">
+        <div class="lookbook-header">
+            <h2 class="section-title">Lookbook</h2>
+            <p class="section-subtitle">Explore as combinações que definem esta temporada</p>
+        </div>
+        <div class="lookbook-grid">
+            <div class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1619473792839-1d3b0355a7c8?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Look 1">
+                <div class="lookbook-item-caption">
+                    <div class="lookbook-item-name">Conjunto Estruturado</div>
+                    <div class="lookbook-item-name">Silhueta Arquitetônica</div>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?q=80&w=2622&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Look 2">
+                <div class="lookbook-item-caption">
+                    <div class="lookbook-item-name">Vestido Fluido</div>
+                    <div class="lookbook-item-name">Movimento Orgânico</div>
+                </div>
+            </div>
+            <div class="lookbook-item">
+                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Look 3">
+                <div class="lookbook-item-caption">
+                    <div class="lookbook-item-name">Tailoring Moderno</div>
+                    <div class="lookbook-item-name">Precisão e Conforto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- mulheres que inspiram -->
+    <section class="inspiration">
+        <div class="section-header">
+            <h2 class="section-title">Mulheres que Inspiram</h2>
+            <p class="section-subtitle">Conheça as histórias extraordinárias por trás de mulheres reais</p>
+        </div>
+        
+        <!-- Marina Silva -->
+        <a href="perfil-mariana.html" class="inspiration-profile profile-odd">
+            <div class="profile-text">
+                <p class="profile-quote">"Minha roupa é minha armadura para enfrentar os desafios do dia a dia com elegância."</p>
+                <h3 class="profile-name">Marina Silva</h3>
+                <p class="profile-bio">Empreendedora social que fundou uma ONG para capacitação profissional de mulheres em situação de vulnerabilidade.</p>
+                <span class="profile-link">Conheça sua história</span>
+            </div>
+            <div class="profile-image">
+                <div class="gradient-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marina Silva">
+            </div>
+        </a>
+
+        <!-- Ana Beatriz -->
+        <a href="perfil-ana.html" class="inspiration-profile profile-even">
+            <div class="profile-text">
+                <p class="profile-quote">"Encontro na moda consciente uma forma de alinhar meus valores com minha expressão pessoal."</p>
+                <h3 class="profile-name">Ana Beatriz</h3>
+                <p class="profile-bio">Diretora de arte premiada que está revolucionando o design brasileiro com seu olhar único e sustentável.</p>
+                <span class="profile-link">Conheça sua história</span>
+            </div>
+            <div class="profile-image">
+                <div class="gradient-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ana Beatriz">
+            </div>
+        </a>
+        
+        <!-- Camila Fernandes -->
+        <a href="perfil-camila.html" class="inspiration-profile profile-odd">
+            <div class="profile-text">
+                <p class="profile-quote">"Ser mulher é sobre liberdade - de escolher quem somos e como nos apresentamos ao mundo."</p>
+                <h3 class="profile-name">Camila Fernandes</h3>
+                <p class="profile-bio">Cientista líder em pesquisas sobre mudanças climáticas e uma das jovens mais influentes do mundo segundo a ONU.</p>
+                <span class="profile-link">Conheça sua história</span>
+            </div>
+            <div class="profile-image">
+                <div class="gradient-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Camila Fernandes">
+            </div>
+        </a>
+    </section>
+    
+    <!-- popup de boas-vindas -->
+    <div id="saudacao" class="saudacao"></div>
+    <div id="saudacao-popup" class="saudacao-popup" style="display:none;">
+        <div class="saudacao-popup-content">
+            <span id="fechar-saudacao" class="fechar-saudacao">&times;</span>
+            <span id="saudacao-msg"></span>
+        </div>
+    </div>
+
+    <!-- rodapé -->
+    <footer class="footer">
+        <div class="footer-logo">Andreia Lanna</div>
+        <div class="footer-links">
+            <a href="#">Coleção</a>
+            <a href="#">Sobre</a>
+            <a href="#">Sustentabilidade</a>
+            <a href="#">Contato</a>
+            <a href="#">Journal</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2024 Andreia Lanna. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+      // barra do topo muda de cor quando rola a página
+      window.addEventListener('scroll', function() {
+          const topBar = document.querySelector('.top-bar');
+          if (window.scrollY > 50) {
+              topBar.classList.add('scrolled');
+          } else {
+              topBar.classList.remove('scrolled');
+          }
+      });
+
+      // clicar na seta desce até a coleção
+      function scrollToContent() {
+        const section = document.getElementById('concept');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      // popup de boas-vindas só aparece na primeira visita
+      window.addEventListener('DOMContentLoaded', () => {
+        const saudacaoPopup = document.getElementById('saudacao-popup');
+        const saudacaoMsg = document.getElementById('saudacao-msg');
+        const fecharBtn = document.getElementById('fechar-saudacao');
+        const hora = new Date().getHours();
+        let mensagem = "Bem-vinda";
+
+        if (hora >= 5 && hora < 12) mensagem = "Bom dia";
+        else if (hora >= 12 && hora < 18) mensagem = "Boa tarde";
+        else mensagem = "Boa noite";
+
+        // só mostra se ainda não viu
+        if (!localStorage.getItem('popupBoasVindasVisto')) {
+          saudacaoMsg.textContent = `${mensagem}, bem-vinda à Andreia Lanna!`;
+          saudacaoPopup.style.display = 'flex';
+          localStorage.setItem('popupBoasVindasVisto', 'sim');
+        }
+
+        fecharBtn.onclick = () => {
+          saudacaoPopup.style.display = 'none';
+        };
+        saudacaoPopup.onclick = (e) => {
+          if (e.target === saudacaoPopup) saudacaoPopup.style.display = 'none';
+        };
+      });
+    </script>
+</body>
+</html>

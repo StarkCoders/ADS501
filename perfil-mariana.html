@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreia Lanna | Marina Silva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #d4af8e;
+            --text-color: #333333;
+            --light-gray: #f8f8f8;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--secondary-color);
+        }
+        /* Barra superior fixa */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .top-bar.scrolled {
+            background: var(--secondary-color);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+        .logo {
+            font-weight: 500;
+            letter-spacing: 2px;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        .menu-btn {
+            position: relative;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0 12px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            user-select: none;
+        }
+        .menu-btn:hover,
+        .menu-btn:focus {
+            color: var(--accent-color);
+        }
+        .menu-btn .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--secondary-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-radius: 0 0 10px 10px;
+            min-width: 180px;
+            z-index: 1001;
+            padding: 12px 0;
+            list-style: none;
+        }
+        .menu-btn:hover .dropdown-menu,
+        .menu-btn:focus-within .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-color);
+        }
+        /* Página de Perfil */
+        .profile-page {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 180px;
+        }
+        .profile-header {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        .profile-header-image {
+            flex: 1;
+            height: 600px;
+        }
+        .profile-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-header-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .profile-page-quote {
+            font-size: 28px;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .profile-page-name {
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .profile-page-title {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        .profile-social a {
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-right: 15px;
+        }
+        .profile-content {
+            column-count: 2;
+            column-gap: 60px;
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+        .profile-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .profile-gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 40px auto 0 auto;
+            padding: 14px 36px;
+            background: linear-gradient(90deg, #b47b5c 0%, #d4af8e 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(180,123,92,0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .back-home-btn:hover, .back-home-btn:focus {
+            background: linear-gradient(90deg, #a06a4b 0%, #b47b5c 100%);
+            color: #fff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(180,123,92,0.18);
+            text-decoration: none;
+        }
+        /* Footer */
+        .footer {
+            padding: 60px 40px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        .footer-logo {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .footer-social a {
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+        .footer-copyright {
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <a href="index.html" class="logo">Andreia Lanna</a>
+        <div class="menu-btn">
+            Menu
+            <ul class="dropdown-menu">
+                <li><a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li><a href="be-yourself.html">Be Your Self</a></li>
+                <li><a href="colecao.html">Coleção</a></li>
+                <li><a href="#">Lookbook</a></li>
+                <li><a href="#">Sustentabilidade</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Journal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Deixa a barra do topo com fundo quando rolar a página
+        window.addEventListener('scroll', function() {
+            const topBar = document.querySelector('.top-bar');
+            if (window.scrollY > 50) {
+                topBar.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Conteúdo do perfil da Marina -->
+    <div class="profile-page">
+        <div class="profile-header">
+            <div class="profile-header-image">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marina Silva">
+            </div>
+            <div class="profile-header-text">
+                <p class="profile-page-quote">"Minha roupa é minha armadura para enfrentar os desafios do dia a dia com elegância."</p>
+                <h1 class="profile-page-name">Marina Silva</h1>
+                <p class="profile-page-title">Empreendedora Social & Fundadora da ONG Elas Podem</p>
+                <div class="profile-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <p>Marina Silva transformou sua própria história de superação em um movimento que já capacitou mais de 2.000 mulheres em situação de vulnerabilidade. Nascida no interior do Nordeste, enfrentou dificuldades desde cedo, mas encontrou na educação seu caminho para mudar não apenas sua vida, mas a de muitas outras mulheres.</p>
+            <p>Sua ONG, "Elas Podem", oferece cursos profissionalizantes, mentoria e apoio psicológico para mulheres vítimas de violência doméstica. "Quando uma mulher se veste com peças que a fazem sentir poderosa, isso transborda para todas as áreas da sua vida", explica Marina, que escolhe looks da Andreia Lanna para eventos importantes.</p>
+            <p>"Conheci a Andreia em um evento beneficente e me identifiquei imediatamente com sua visão de moda que empodera. As peças têm essa incrível capacidade de nos fazer sentir fortes e elegantes ao mesmo tempo", compartilha Marina.</p>
+            <p>Seu trabalho já foi reconhecido internacionalmente, mas Marina mantém os pés no chão: "Meu maior prêmio é ver uma de nossas alunas conquistando sua independência financeira e reconstruindo sua autoestima. Recentemente, uma de nossas primeiras participantes abriu seu próprio negócio e hoje emprega outras mulheres da comunidade".</p>
+            <p>Além do trabalho social, Marina é palestrante e consultora para empresas que buscam implementar programas de diversidade e inclusão. "Acredito que o verdadeiro luxo está em peças bem feitas, que duram e têm um propósito. É isso que encontro na Andreia Lanna", finaliza.</p>
+        </div>
+        
+        <h2 class="section-title">Marina por Marina</h2>
+        <div class="profile-gallery">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marina trabalhando">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marina na ONG">
+            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marina recebendo prêmio">
+        </div>
+        
+        <a href="index.html" class="back-home-btn">
+            <i class="fas fa-arrow-left"></i> Voltar para Home
+        </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">Andreia Lanna</div>
+        <div class="footer-links">
+            <a href="#">Coleção</a>
+            <a href="#">Sobre</a>
+            <a href="#">Sustentabilidade</a>
+            <a href="#">Contato</a>
+            <a href="#">Journal</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2024 Andreia Lanna. Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreia Lanna | Be Your Self</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #d4af8e;
+            --text-color: #333333;
+            --light-gray: #f8f8f8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: var(--secondary-color);
+        }
+        
+        /* barra superior */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        
+        .top-bar.scrolled {
+            background: var(--secondary-color);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+        
+        .central-logo-bar {
+            justify-content: center;
+        }
+        
+        .logo {
+            font-weight: 500;
+            letter-spacing: 2px;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .menu-btn {
+            position: relative;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0 12px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .menu-btn:hover,
+        .menu-btn:focus {
+            color: var(--accent-color);
+        }
+        
+        .menu-btn .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--secondary-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-radius: 0 0 10px 10px;
+            min-width: 180px;
+            z-index: 1001;
+            padding: 12px 0;
+            list-style: none;
+        }
+        
+        .menu-btn:hover .dropdown-menu,
+        .menu-btn:focus-within .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu li {
+            width: 100%;
+        }
+        
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+            color: var(--accent-color);
+        }
+        
+        /* landpage */
+        .be-yourself-hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--secondary-color);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 40px;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* seção manifeto */
+        .manifesto {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .manifesto-content {
+            column-count: 2;
+            column-gap: 60px;
+            line-height: 1.8;
+            margin-bottom: 60px;
+        }
+        
+        .manifesto-content p {
+            margin-bottom: 30px;
+        }
+        
+        /* seção citação */
+        .quote-section {
+            padding: 100px 40px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .quote-text {
+            font-size: 32px;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+        
+        .quote-author {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        /* seção galeria */
+        .gallery {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* footer */
+        .footer {
+            padding: 60px 40px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-social a {
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+        
+        .footer-copyright {
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        /* botão */
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            background: linear-gradient(90deg, #b47b5c 0%, #d4af8e 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(180,123,92,0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .primary-btn:hover, .primary-btn:focus {
+            background: linear-gradient(90deg, #a06a4b 0%, #b47b5c 100%);
+            color: #fff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(180,123,92,0.18);
+            text-decoration: none;
+        }
+
+        /* Estilos do Modal */
+        /* Modal da galeria */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .gallery-modal.open {
+            display: flex;
+        }
+        .gallery-modal-bg {
+            position: absolute;
+            width: 100vw; height: 100vh;
+            left: 0; top: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+        .gallery-modal-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 320px;
+            min-height: 320px;
+            max-width: 90vw;
+            max-height: 80vh;
+            transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+        }
+        .gallery-modal-content.zoom-in {
+            animation: zoomInToCenter 0.5s cubic-bezier(.77,0,.18,1);
+        }
+        .gallery-modal-content.slide-left {
+            animation: slideLeft 0.6s cubic-bezier(.77,0,.18,1) forwards;
+        }
+        @keyframes zoomInToCenter {
+            0% {
+                transform: scale(0.5) translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-180px);
+            }
+        }
+        .gallery-modal-content img {
+            max-width: 350px;
+            max-height: 70vh;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            background: #fff;
+            margin-right: 32px;
+            transition: box-shadow 0.3s;
+        }
+        .gallery-modal-quote {
+            opacity: 0;
+            max-width: 350px;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--primary-color);
+            font-weight: 400;
+            line-height: 1.6;
+            transition: opacity 0.5s 0.3s;
+        }
+        .gallery-modal-content.show-quote .gallery-modal-quote {
+            opacity: 1;
+        }
+        .gallery-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            text-shadow: 0 2px 8px #000;
+        }
+        @media (max-width: 800px) {
+            .gallery-modal-content {
+                flex-direction: column;
+                min-width: 0;
+                min-height: 0;
+            }
+            .gallery-modal-content img {
+                margin-right: 0;
+                margin-bottom: 24px;
+                max-width: 90vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <a href="index.html" class="logo">Andreia Lanna</a>
+        <div class="menu-btn">
+            Menu
+            <ul class="dropdown-menu">
+                <li><a href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li><a href="be-yourself.html">Be Your Self</a></li>
+                <li><a href="colecao.html">Coleção</a></li>
+                <li><a href="#">Lookbook</a></li>
+                <li><a href="#">Sustentabilidade</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Journal</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero principal -->
+    <section class="be-yourself-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Be Your Self</h1>
+            <p class="hero-subtitle">Uma jornada de autodescoberta através da moda que celebra a individualidade e a autenticidade</p>
+            <a href="#manifesto" class="primary-btn">
+                <i class="fas fa-chevron-down"></i> Conheça o Manifesto
+            </a>
+        </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="manifesto" id="manifesto">
+        <div class="section-header">
+            <h2 class="section-title">O Manifesto</h2>
+            <p class="section-subtitle">Nossa filosofia sobre moda, identidade e expressão pessoal</p>
+        </div>
+        <div class="manifesto-content">
+            <p>Acreditamos que a moda vai muito além de tendências passageiras. É uma linguagem silenciosa que conta a história de quem somos, sem precisar de palavras. Na Andreia Lanna, criamos peças que servem como extensão da sua personalidade, não como máscaras para escondê-la.</p>
+            
+            <p>Ser você mesmo nunca foi tão revolucionário. Em um mundo que constantemente tenta nos colocar em caixas, resistir é escolher autenticidade. Nossas criações são feitas para mulheres reais, com vidas reais, que entendem que conforto e estilo não são conceitos opostos.</p>
+            
+            <p>Cada costura, cada dobra, cada tecido foi pensado para celebrar o corpo feminino em toda sua diversidade. Não criamos para um ideal inatingível, mas para a mulher que acorda todos os dias decidida a escrever sua própria história.</p>
+            
+            <p>A verdadeira elegância nasce da confiança em ser exatamente quem você é. Nossas peças são projetadas para se adaptarem a você, e não o contrário. Silhuetas que fluem com o movimento, tecidos que respiram, detalhes que conversam com sua essência.</p>
+            
+            <p>Be Your Self é um convite para abandonar expectativas alheias e abraçar a beleza única que só você pode oferecer ao mundo. É sobre encontrar na moda um aliado para sua jornada de autoaceitação, não mais uma fonte de insegurança.</p>
+            
+            <p>Não seguimos regras, criamos as nossas. Não ditamos tendências, inspiramos atitudes. Cada peça Andreia Lanna carrega esse DNA - a coragem de ser diferente, a ousadia de se mostrar, a liberdade de se reinventar todos os dias.</p>
+        </div>
+    </section>
+
+    <!-- Citação -->
+    <section class="quote-section">
+        <p class="quote-text">"Vestir-se é uma forma de arte diária, onde o corpo é a tela e as roupas são a pintura. Mas a verdadeira obra-prima sempre será a mulher por trás da composição."</p>
+        <p class="quote-author">Andreia Lanna, Fundadora e Estilista</p>
+    </section>
+
+    <!-- Galeria -->
+    <section class="gallery">
+        <div class="section-header">
+            <h2 class="section-title">Be Your Self na Vida Real</h2>
+            <p class="section-subtitle">Como mulheres reais incorporam nossa filosofia no dia a dia</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher em ambiente corporativo">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher criativa em estúdio">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher em momento de lazer">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1485872299829-c673f5194813?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher em evento social">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher em viagem">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mulher em momento de reflexão">
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-logo">Andreia Lanna</div>
+        <div class="footer-links">
+            <a href="#">Coleção</a>
+            <a href="#">Sobre</a>
+            <a href="#">Sustentabilidade</a>
+            <a href="#">Contato</a>
+            <a href="#">Journal</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2024 Andreia Lanna. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Modal da galeria -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-modal-bg"></div>
+        <div class="gallery-modal-content">
+            <img src="" alt="Zoom" id="galleryModalImg">
+            <div class="gallery-modal-quote" id="galleryModalQuote"></div>
+        </div>
+    </div>
+
+    <script>
+        // Deixa a barra do topo com fundo quando rolar a página
+        window.addEventListener('scroll', function() {
+            const topBar = document.querySelector('.top-bar');
+            if (window.scrollY > 50) {
+                topBar.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+            }
+        });
+
+        // Frases para aparecer no modal da galeria
+        const galleryQuotes = [
+            "“A beleza começa no momento em que você decide ser você mesma.”<br><span style='font-size:0.95em;font-weight:400;'>– Coco Chanel</span>",
+            "“O bem-estar feminino é sobre se sentir confortável na própria pele.”<br><span style='font-size:0.95em;font-weight:400;'>– Oprah Winfrey</span>",
+            "“A verdadeira beleza de uma mulher está refletida em sua alma.”<br><span style='font-size:0.95em;font-weight:400;'>– Audrey Hepburn</span>",
+            "“Ser bonita é ser você mesma. Não precisa ser aceita pelos outros.”<br><span style='font-size:0.95em;font-weight:400;'>– Thich Nhat Hanh</span>",
+            "“A mulher que se ama é invencível.”<br><span style='font-size:0.95em;font-weight:400;'>– Sophia Loren</span>",
+            "“A beleza é sentir-se bem consigo mesma, não com o que os outros pensam.”<br><span style='font-size:0.95em;font-weight:400;'>– Salma Hayek</span>"
+        ];
+
+        // Abre o modal da galeria com animação e frase
+        document.querySelectorAll('.gallery-item img').forEach((img, idx) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                const modal = document.getElementById('galleryModal');
+                const modalImg = document.getElementById('galleryModalImg');
+                const modalQuote = document.getElementById('galleryModalQuote');
+                modalImg.src = this.src;
+                modalQuote.innerHTML = galleryQuotes[idx % galleryQuotes.length];
+                modal.classList.add('open');
+                const content = modal.querySelector('.gallery-modal-content');
+                content.classList.remove('slide-left', 'show-quote');
+                content.classList.add('zoom-in');
+                setTimeout(() => {
+                    content.classList.remove('zoom-in');
+                    content.classList.add('slide-left');
+                    setTimeout(() => {
+                        content.classList.add('show-quote');
+                    }, 400);
+                }, 500);
+            });
+        });
+
+        // Fecha o modal ao clicar no fundo embaçado
+        document.querySelector('.gallery-modal-bg').onclick = function() {
+            document.getElementById('galleryModal').classList.remove('open');
+        };
+    </script>
+</body>
+</html>
